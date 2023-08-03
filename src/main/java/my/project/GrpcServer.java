@@ -89,11 +89,57 @@ public class GrpcServer {
 		 * Unary RPCs where the client sends a single request to the server and gets a single response back
 		 * https://grpc.io/docs/what-is-grpc/core-concepts/
 		 */
-		public void function1Service1(MsgRequest req, StreamObserver<MsgReply> responseObserver) {
+		public void totalFloor(MsgRequest req, StreamObserver<MsgReply> responseObserver) {
 			logger.info("Calling gRPC unary type (from the server side)");
-			MsgReply reply = MsgReply.newBuilder().setMessage(req.getMessage() + "(Unary RPC Server said: Hiya)").build();
+			MsgReply reply = MsgReply.newBuilder().setMessage(req.getMessage() + "total car parking lots that is being used" + rand.nextInt(10, 100)).build();
 			responseObserver.onNext(reply);
 			responseObserver.onCompleted();
+		}
+		
+		public StreamObserver<MsgRequest> percentageFloor (StreamObserver<MsgReply> responseObserver) {
+			logger.info("Calling gRPC client streaming type (from the server side)");
+			return new StreamObserver<MsgRequest>() {
+
+				@Override
+				public void onNext(MsgRequest value) {
+					System.out.println("Server received: " + value.getMessage());
+				}
+
+				@Override
+				public void onError(Throwable t) {
+					t.printStackTrace();
+				}
+
+				@Override
+				public void onCompleted() {
+					MsgReply reply = MsgReply.newBuilder().setMessage("(Stream completed)").build();
+					responseObserver.onNext(reply);
+					responseObserver.onCompleted();
+				}
+			};
+		}
+		
+		public StreamObserver<MsgRequest> changeLights (StreamObserver<MsgReply> responseObserver) {
+			logger.info("Calling gRPC client streaming type (from the server side)");
+			return new StreamObserver<MsgRequest>() {
+
+				@Override
+				public void onNext(MsgRequest value) {
+					System.out.println("Server received: " + value.getMessage());
+				}
+
+				@Override
+				public void onError(Throwable t) {
+					t.printStackTrace();
+				}
+
+				@Override
+				public void onCompleted() {
+					MsgReply reply = MsgReply.newBuilder().setMessage("(Stream completed)").build();
+					responseObserver.onNext(reply);
+					responseObserver.onCompleted();
+				}
+			};
 		}
 	}
 	

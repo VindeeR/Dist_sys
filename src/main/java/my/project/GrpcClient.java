@@ -39,20 +39,82 @@ public class GrpcClient {
 	    asyncService3Stub = MyService3Grpc.newStub(channel);	// async calls (for bidirectional streaming)
 	  }
 
-	  // Run function1Service1 from Service1 (Unary RPC)
-	  public void clientSideFunction1Service1() {
+	  // Run totalFloor from Service1 (Unary RPC)
+	  public void clientSideTotalFloor() {
 		  logger.info("Calling gRPC unary type (from the client side)");
 
 		  try {
-			  MsgRequest request = MsgRequest.newBuilder().setMessage("(Unary RPC Client said: Hiya)").build();
+			  MsgRequest request = MsgRequest.newBuilder().setMessage("(Unary RPC Client said: How many spots are being used?)").build();
 			  MsgReply reply = blockingStubMyService1
 					  .withDeadlineAfter(1, TimeUnit.SECONDS)
-					  .function1Service1(request);
+					  .totalFloor(request);
 			  System.out.println("Client Received: " + reply.getMessage());
 		  } catch (StatusRuntimeException e) {
 			  logger.log(Level.WARNING, "RPC failed: {0}", e.getStatus());
 			  return;
 		  }
+	  }
+	  
+	  // Run totalFloor from Service1 (Unary RPC)
+	  public void clientSidePercentageFloor() {
+		  logger.info("Calling gRPC client streaming type (from the client side)");
+
+		  StreamObserver<MsgReply> responseObserver = new StreamObserver<MsgReply>() {
+			  @Override
+			  public void onNext(MsgReply value) {
+				  System.out.println("Received: " + value.getMessage());					
+			  }
+
+			  @Override
+			  public void onError(Throwable t) {
+				  t.printStackTrace();
+			  }
+
+			  @Override
+			  public void onCompleted() {
+				  System.out.println("Bye. Stream completed");
+			  }
+		  };
+
+		  // send a stream (aka: bunch of messages) back to the server
+		  StreamObserver<MsgRequest> requestObserver = asyncService2Stub.function2Service2(responseObserver);
+		  requestObserver.onNext(MsgRequest.newBuilder().setMessage("(Client said: How're you keeping?)").build());
+		  for (int i=0; i<rand.nextInt(1, 10); i++){
+			  requestObserver.onNext(MsgRequest.newBuilder().setMessage("(Client said: blah, blah, blah)").build());
+		  }
+
+		  requestObserver.onCompleted();
+	  }
+	  
+	  // Run totalFloor from Service1 (Unary RPC)
+	  public void clientSideChangeLights() {
+		  logger.info("Calling gRPC client streaming type (from the client side)");
+
+		  StreamObserver<MsgReply> responseObserver = new StreamObserver<MsgReply>() {
+			  @Override
+			  public void onNext(MsgReply value) {
+				  System.out.println("Received: " + value.getMessage());					
+			  }
+
+			  @Override
+			  public void onError(Throwable t) {
+				  t.printStackTrace();
+			  }
+
+			  @Override
+			  public void onCompleted() {
+				  System.out.println("Bye. Stream completed");
+			  }
+		  };
+
+		  // send a stream (aka: bunch of messages) back to the server
+		  StreamObserver<MsgRequest> requestObserver = asyncService2Stub.function2Service2(responseObserver);
+		  requestObserver.onNext(MsgRequest.newBuilder().setMessage("(Client said: How're you keeping?)").build());
+		  for (int i=0; i<rand.nextInt(1, 10); i++){
+			  requestObserver.onNext(MsgRequest.newBuilder().setMessage("(Client said: blah, blah, blah)").build());
+		  }
+
+		  requestObserver.onCompleted();
 	  }
 
 	  // Run function1Service2 from Service2 (Server streaming RPC)
@@ -152,7 +214,9 @@ public class GrpcClient {
 				  .build();
 		  try {
 			  GrpcClient client = new GrpcClient(channel);
-			  client.clientSideFunction1Service1();			// unary type
+			  client.clientSideTotalFloor();				// unary type
+			  client.clientSidePercentageFloor();				// unary type
+			  client.clientSideChangeLights();				// unary type
 			  client.clientSideFunction1Service2();			// server-streaming type
 			  client.clientSideFunction2Service2();			// client-streaming type
 			  client.clientSideFunction1Service3();			// bi-directional streaming type
