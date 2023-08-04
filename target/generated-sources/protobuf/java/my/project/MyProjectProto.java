@@ -40,13 +40,22 @@ public final class MyProjectProto {
       "\n\017percentageFloor\022\023.project.MsgRequest\032\021" +
       ".project.MsgReply\"\000(\001\022:\n\014changeLights\022\023." +
       "project.MsgRequest\032\021.project.MsgReply\"\000(" +
-      "\0012\216\001\n\nMyService2\022?\n\021function1Service2\022\023." +
+      "\0012\300\002\n\nMyService2\022?\n\021function1Service2\022\023." +
       "project.MsgRequest\032\021.project.MsgReply\"\0000" +
       "\001\022?\n\021function2Service2\022\023.project.MsgRequ" +
-      "est\032\021.project.MsgReply\"\000(\0012O\n\nMyService3" +
-      "\022A\n\021function1Service3\022\023.project.MsgReque" +
-      "st\032\021.project.MsgReply\"\000(\0010\001B$\n\nmy.projec" +
-      "tB\016MyProjectProtoP\001\242\002\003MyPb\006proto3"
+      "est\032\021.project.MsgReply\"\000(\001\0227\n\013addLocatio" +
+      "n\022\023.project.MsgRequest\032\021.project.MsgRepl" +
+      "y\"\000\022:\n\016deleteLocation\022\023.project.MsgReque" +
+      "st\032\021.project.MsgReply\"\000\022;\n\013specialSpot\022\023" +
+      ".project.MsgRequest\032\021.project.MsgReply\"\000" +
+      "(\0010\0012\370\001\n\nMyService3\022A\n\021function1Service3" +
+      "\022\023.project.MsgRequest\032\021.project.MsgReply" +
+      "\"\000(\0010\001\0229\n\tfreeSpots\022\023.project.MsgRequest" +
+      "\032\021.project.MsgReply\"\000(\0010\001\0227\n\tcountTime\022\023" +
+      ".project.MsgRequest\032\021.project.MsgReply\"\000" +
+      "0\001\0223\n\007payment\022\023.project.MsgRequest\032\021.pro" +
+      "ject.MsgReply\"\000B$\n\nmy.projectB\016MyProject" +
+      "ProtoP\001\242\002\003MyPb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

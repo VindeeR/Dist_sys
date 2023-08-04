@@ -192,6 +192,13 @@ public class GrpcServer {
 				}
 			};
 		}
+		
+		public void addLocation(MsgRequest req, StreamObserver<MsgReply> responseObserver) {
+			logger.info("Calling gRPC unary type (from the server side)");
+			MsgReply reply = MsgReply.newBuilder().setMessage(req.getMessage() + "total car parking lots that is being used" + rand.nextInt(10, 100)).build();
+			responseObserver.onNext(reply);
+			responseObserver.onCompleted();
+		}
 	}
 
 	static class MyService3Impl extends MyService3Grpc.MyService3ImplBase {

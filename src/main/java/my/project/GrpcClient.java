@@ -215,13 +215,37 @@ public class GrpcClient {
 		  try {
 			  GrpcClient client = new GrpcClient(channel);
 			  client.clientSideTotalFloor();				// unary type
-			  client.clientSidePercentageFloor();				// unary type
-			  client.clientSideChangeLights();				// unary type
+			  client.clientSidePercentageFloor();			// client-streaming type
+			  client.clientSideChangeLights();				// client-streaming type
+
+			  client.clientSideAddLocation();				// client-streaming type
+			  //client.clientSideDeleteLocation();			// client-streaming type
+			  //client.clientSideSpecialSpot();				// bi-directional streaming type
+			  
+			  //client.clientSideFreeSpots();					// bi-directional streaming type
+			  //client.clientSideCountTime();					// server-streaming type
+			  //client.clientSidePayment();					// unary type
+			  
 			  client.clientSideFunction1Service2();			// server-streaming type
 			  client.clientSideFunction2Service2();			// client-streaming type
 			  client.clientSideFunction1Service3();			// bi-directional streaming type
 		  } finally {
 			  channel.shutdown().awaitTermination(30, TimeUnit.SECONDS);
+		  }
+	  }
+
+	private void clientSideAddLocation() {
+		  logger.info("Calling gRPC unary type (from the client side)");
+
+		  try {
+			  MsgRequest request = MsgRequest.newBuilder().setMessage("(Unary RPC Client said: How many spots are being used?)").build();
+			  MsgReply reply = blockingStubMyService2
+					  .withDeadlineAfter(1, TimeUnit.SECONDS)
+					  .addLocation(request);
+			  System.out.println("Client Received: " + reply.getMessage());
+		  } catch (StatusRuntimeException e) {
+			  logger.log(Level.WARNING, "RPC failed: {0}", e.getStatus());
+			  return;
 		  }
 	  }
 }
