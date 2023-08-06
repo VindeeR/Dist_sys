@@ -89,13 +89,16 @@ public class GrpcServer {
 		 * Unary RPCs where the client sends a single request to the server and gets a single response back
 		 * https://grpc.io/docs/what-is-grpc/core-concepts/
 		 */
+		
+		// total car parking lots that is being used (Unary RPC)
 		public void totalFloor(MsgRequest req, StreamObserver<MsgReply> responseObserver) {
 			logger.info("Calling gRPC unary type (from the server side)");
-			MsgReply reply = MsgReply.newBuilder().setMessage(req.getMessage() + "total car parking lots that is being used" + rand.nextInt(10, 100)).build();
+			MsgReply reply = MsgReply.newBuilder().setMessage(req.getMessage() + "total car parking lots that is being used" + rand.nextInt(10, 100)+" out of 500").build();
 			responseObserver.onNext(reply);
 			responseObserver.onCompleted();
 		}
 		
+		// which floor percentage is bring used (Client streaming RPCs) from Service1
 		public StreamObserver<MsgRequest> percentageFloor (StreamObserver<MsgReply> responseObserver) {
 			logger.info("Calling gRPC client streaming type (from the server side)");
 			return new StreamObserver<MsgRequest>() {
@@ -119,6 +122,7 @@ public class GrpcServer {
 			};
 		}
 		
+		// verify if they activity nearby and turn off or on the lights (Client streaming RPCs) from Service1
 		public StreamObserver<MsgRequest> changeLights (StreamObserver<MsgReply> responseObserver) {
 			logger.info("Calling gRPC client streaming type (from the server side)");
 			return new StreamObserver<MsgRequest>() {
@@ -199,6 +203,20 @@ public class GrpcServer {
 			responseObserver.onNext(reply);
 			responseObserver.onCompleted();
 		}
+		
+		public void removeLocation(MsgRequest req, StreamObserver<MsgReply> responseObserver) {
+			logger.info("Calling gRPC unary type (from the server side)");
+			MsgReply reply = MsgReply.newBuilder().setMessage(req.getMessage() + "total car parking lots that is being used" + rand.nextInt(10, 100)).build();
+			responseObserver.onNext(reply);
+			responseObserver.onCompleted();
+		}
+		
+		public void specialSpot(MsgRequest req, StreamObserver<MsgReply> responseObserver) {
+			logger.info("Calling gRPC unary type (from the server side)");
+			MsgReply reply = MsgReply.newBuilder().setMessage(req.getMessage() + "total car parking lots that is being used" + rand.nextInt(10, 100)).build();
+			responseObserver.onNext(reply);
+			responseObserver.onCompleted();
+		}
 	}
 
 	static class MyService3Impl extends MyService3Grpc.MyService3ImplBase {
@@ -229,5 +247,62 @@ public class GrpcServer {
 				}
 			};
 		}
+		
+		// count the amount of free spots
+		public StreamObserver<MsgRequest> freeSpots(MsgRequest req, StreamObserver<MsgReply> responseObserver) {
+			logger.info("Calling gRPC bi-directional streaming type (from the server side)");
+			return new StreamObserver<MsgRequest>() {
+				@Override
+				public void onNext(MsgRequest value) {
+					System.out.println("(Request free spot count received: " + value.getMessage() + ")");
+					MsgReply reply = MsgReply.newBuilder().setMessage("Free spots Count is: "+rand.nextInt(0,500)).build();
+					responseObserver.onNext(reply);
+					reply = MsgReply.newBuilder().setMessage("Free spots Count is: "+rand.nextInt(0,500)).build();
+					responseObserver.onNext(reply);
+				}
+
+				@Override
+				public void onError(Throwable t) {
+					t.printStackTrace();
+				}
+
+				@Override
+				public void onCompleted() {
+					responseObserver.onCompleted();
+				}
+			};
+		}
+		
+		// count the time each car is at one spot
+		public void countTime(MsgRequest req, StreamObserver<MsgReply> responseObserver) {
+			logger.info("Calling gRPC server streaming type (from the server side)");
+			MsgReply reply = MsgReply.newBuilder().setMessage(req.getMessage() + "(Streaming Server said: blah, blah)").build();
+			responseObserver.onNext(reply);
+
+			// send a stream (aka: bunch of messages) back to the client
+			for (int i=0; i<rand.nextInt(1, 10); i++){
+				reply = MsgReply.newBuilder().setMessage("(Streaming Server: and more blah, blah, blah)").build();
+				responseObserver.onNext(reply);
+			}
+
+			// no more messages
+			responseObserver.onCompleted();
+		}
+		
+		public void payment(MsgRequest req, StreamObserver<MsgReply> responseObserver) {
+			logger.info("Calling gRPC server streaming type (from the server side)");
+			MsgReply reply = MsgReply.newBuilder().setMessage(req.getMessage() + "(Streaming Server said: blah, blah)").build();
+			responseObserver.onNext(reply);
+
+			// send a stream (aka: bunch of messages) back to the client
+			for (int i=0; i<rand.nextInt(1, 10); i++){
+				reply = MsgReply.newBuilder().setMessage("(Streaming Server: and more blah, blah, blah)").build();
+				responseObserver.onNext(reply);
+			}
+
+			// no more messages
+			responseObserver.onCompleted();
+		}
+
 	}
 }
