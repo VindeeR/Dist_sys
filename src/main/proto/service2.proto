@@ -22,14 +22,6 @@ package project.myservice;
 import "service1.proto";
 
 service MyService2 {
-	// Server streaming RPCs where the client sends a request
-	// to the server and gets a stream to read a sequence of
-	// messages back
-	rpc function1Service2 (MsgRequest) returns (stream MsgReply) {}
- 
- 	// Client streaming RPCs where the client writes a sequence
- 	// of messages and sends them to the server
- 	rpc function2Service2 (stream MsgRequest) returns (MsgReply) {}
  	
  	rpc addLocation (MsgRequest) returns (MsgReply) {}
  	rpc deleteLocation (MsgRequest) returns (MsgReply) {}

@@ -24,16 +24,13 @@ public final class Service3 {
   static {
     java.lang.String[] descriptorData = {
       "\n\016service3.proto\022\021project.myservice\032\016ser" +
-      "vice1.proto2\310\002\n\nMyService3\022U\n\021function1S" +
-      "ervice3\022\035.project.myservice.MsgRequest\032\033" +
-      ".project.myservice.MsgReply\"\000(\0010\001\022M\n\tfre" +
-      "eSpots\022\035.project.myservice.MsgRequest\032\033." +
-      "project.myservice.MsgReply\"\000(\0010\001\022K\n\tcoun" +
-      "tTime\022\035.project.myservice.MsgRequest\032\033.p" +
-      "roject.myservice.MsgReply\"\0000\001\022G\n\007payment" +
-      "\022\035.project.myservice.MsgRequest\032\033.projec" +
-      "t.myservice.MsgReply\"\000B\014\n\nmy.projectb\006pr" +
-      "oto3"
+      "vice1.proto2\361\001\n\nMyService3\022M\n\tfreeSpots\022" +
+      "\035.project.myservice.MsgRequest\032\033.project" +
+      ".myservice.MsgReply\"\000(\0010\001\022K\n\tcountTime\022\035" +
+      ".project.myservice.MsgRequest\032\033.project." +
+      "myservice.MsgReply\"\0000\001\022G\n\007payment\022\035.proj" +
+      "ect.myservice.MsgRequest\032\033.project.myser" +
+      "vice.MsgReply\"\000B\014\n\nmy.projectb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

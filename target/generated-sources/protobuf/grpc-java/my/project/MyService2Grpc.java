@@ -16,68 +16,6 @@ public final class MyService2Grpc {
 
   // Static method descriptors that strictly reflect the proto.
   private static volatile io.grpc.MethodDescriptor<my.project.MsgRequest,
-      my.project.MsgReply> getFunction1Service2Method;
-
-  @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "function1Service2",
-      requestType = my.project.MsgRequest.class,
-      responseType = my.project.MsgReply.class,
-      methodType = io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
-  public static io.grpc.MethodDescriptor<my.project.MsgRequest,
-      my.project.MsgReply> getFunction1Service2Method() {
-    io.grpc.MethodDescriptor<my.project.MsgRequest, my.project.MsgReply> getFunction1Service2Method;
-    if ((getFunction1Service2Method = MyService2Grpc.getFunction1Service2Method) == null) {
-      synchronized (MyService2Grpc.class) {
-        if ((getFunction1Service2Method = MyService2Grpc.getFunction1Service2Method) == null) {
-          MyService2Grpc.getFunction1Service2Method = getFunction1Service2Method =
-              io.grpc.MethodDescriptor.<my.project.MsgRequest, my.project.MsgReply>newBuilder()
-              .setType(io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "function1Service2"))
-              .setSampledToLocalTracing(true)
-              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  my.project.MsgRequest.getDefaultInstance()))
-              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  my.project.MsgReply.getDefaultInstance()))
-              .setSchemaDescriptor(new MyService2MethodDescriptorSupplier("function1Service2"))
-              .build();
-        }
-      }
-    }
-    return getFunction1Service2Method;
-  }
-
-  private static volatile io.grpc.MethodDescriptor<my.project.MsgRequest,
-      my.project.MsgReply> getFunction2Service2Method;
-
-  @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "function2Service2",
-      requestType = my.project.MsgRequest.class,
-      responseType = my.project.MsgReply.class,
-      methodType = io.grpc.MethodDescriptor.MethodType.CLIENT_STREAMING)
-  public static io.grpc.MethodDescriptor<my.project.MsgRequest,
-      my.project.MsgReply> getFunction2Service2Method() {
-    io.grpc.MethodDescriptor<my.project.MsgRequest, my.project.MsgReply> getFunction2Service2Method;
-    if ((getFunction2Service2Method = MyService2Grpc.getFunction2Service2Method) == null) {
-      synchronized (MyService2Grpc.class) {
-        if ((getFunction2Service2Method = MyService2Grpc.getFunction2Service2Method) == null) {
-          MyService2Grpc.getFunction2Service2Method = getFunction2Service2Method =
-              io.grpc.MethodDescriptor.<my.project.MsgRequest, my.project.MsgReply>newBuilder()
-              .setType(io.grpc.MethodDescriptor.MethodType.CLIENT_STREAMING)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "function2Service2"))
-              .setSampledToLocalTracing(true)
-              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  my.project.MsgRequest.getDefaultInstance()))
-              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  my.project.MsgReply.getDefaultInstance()))
-              .setSchemaDescriptor(new MyService2MethodDescriptorSupplier("function2Service2"))
-              .build();
-        }
-      }
-    }
-    return getFunction2Service2Method;
-  }
-
-  private static volatile io.grpc.MethodDescriptor<my.project.MsgRequest,
       my.project.MsgReply> getAddLocationMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
@@ -219,29 +157,6 @@ public final class MyService2Grpc {
   public interface AsyncService {
 
     /**
-     * <pre>
-     * Server streaming RPCs where the client sends a request
-     * to the server and gets a stream to read a sequence of
-     * messages back
-     * </pre>
-     */
-    default void function1Service2(my.project.MsgRequest request,
-        io.grpc.stub.StreamObserver<my.project.MsgReply> responseObserver) {
-      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getFunction1Service2Method(), responseObserver);
-    }
-
-    /**
-     * <pre>
-     * Client streaming RPCs where the client writes a sequence
-     * of messages and sends them to the server
-     * </pre>
-     */
-    default io.grpc.stub.StreamObserver<my.project.MsgRequest> function2Service2(
-        io.grpc.stub.StreamObserver<my.project.MsgReply> responseObserver) {
-      return io.grpc.stub.ServerCalls.asyncUnimplementedStreamingCall(getFunction2Service2Method(), responseObserver);
-    }
-
-    /**
      */
     default void addLocation(my.project.MsgRequest request,
         io.grpc.stub.StreamObserver<my.project.MsgReply> responseObserver) {
@@ -291,31 +206,6 @@ public final class MyService2Grpc {
     }
 
     /**
-     * <pre>
-     * Server streaming RPCs where the client sends a request
-     * to the server and gets a stream to read a sequence of
-     * messages back
-     * </pre>
-     */
-    public void function1Service2(my.project.MsgRequest request,
-        io.grpc.stub.StreamObserver<my.project.MsgReply> responseObserver) {
-      io.grpc.stub.ClientCalls.asyncServerStreamingCall(
-          getChannel().newCall(getFunction1Service2Method(), getCallOptions()), request, responseObserver);
-    }
-
-    /**
-     * <pre>
-     * Client streaming RPCs where the client writes a sequence
-     * of messages and sends them to the server
-     * </pre>
-     */
-    public io.grpc.stub.StreamObserver<my.project.MsgRequest> function2Service2(
-        io.grpc.stub.StreamObserver<my.project.MsgReply> responseObserver) {
-      return io.grpc.stub.ClientCalls.asyncClientStreamingCall(
-          getChannel().newCall(getFunction2Service2Method(), getCallOptions()), responseObserver);
-    }
-
-    /**
      */
     public void addLocation(my.project.MsgRequest request,
         io.grpc.stub.StreamObserver<my.project.MsgReply> responseObserver) {
@@ -354,19 +244,6 @@ public final class MyService2Grpc {
     protected MyService2BlockingStub build(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       return new MyService2BlockingStub(channel, callOptions);
-    }
-
-    /**
-     * <pre>
-     * Server streaming RPCs where the client sends a request
-     * to the server and gets a stream to read a sequence of
-     * messages back
-     * </pre>
-     */
-    public java.util.Iterator<my.project.MsgReply> function1Service2(
-        my.project.MsgRequest request) {
-      return io.grpc.stub.ClientCalls.blockingServerStreamingCall(
-          getChannel(), getFunction1Service2Method(), getCallOptions(), request);
     }
 
     /**
@@ -417,11 +294,9 @@ public final class MyService2Grpc {
     }
   }
 
-  private static final int METHODID_FUNCTION1SERVICE2 = 0;
-  private static final int METHODID_ADD_LOCATION = 1;
-  private static final int METHODID_DELETE_LOCATION = 2;
-  private static final int METHODID_FUNCTION2SERVICE2 = 3;
-  private static final int METHODID_SPECIAL_SPOT = 4;
+  private static final int METHODID_ADD_LOCATION = 0;
+  private static final int METHODID_DELETE_LOCATION = 1;
+  private static final int METHODID_SPECIAL_SPOT = 2;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -440,10 +315,6 @@ public final class MyService2Grpc {
     @java.lang.SuppressWarnings("unchecked")
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
-        case METHODID_FUNCTION1SERVICE2:
-          serviceImpl.function1Service2((my.project.MsgRequest) request,
-              (io.grpc.stub.StreamObserver<my.project.MsgReply>) responseObserver);
-          break;
         case METHODID_ADD_LOCATION:
           serviceImpl.addLocation((my.project.MsgRequest) request,
               (io.grpc.stub.StreamObserver<my.project.MsgReply>) responseObserver);
@@ -462,9 +333,6 @@ public final class MyService2Grpc {
     public io.grpc.stub.StreamObserver<Req> invoke(
         io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
-        case METHODID_FUNCTION2SERVICE2:
-          return (io.grpc.stub.StreamObserver<Req>) serviceImpl.function2Service2(
-              (io.grpc.stub.StreamObserver<my.project.MsgReply>) responseObserver);
         case METHODID_SPECIAL_SPOT:
           return (io.grpc.stub.StreamObserver<Req>) serviceImpl.specialSpot(
               (io.grpc.stub.StreamObserver<my.project.MsgReply>) responseObserver);
@@ -476,20 +344,6 @@ public final class MyService2Grpc {
 
   public static final io.grpc.ServerServiceDefinition bindService(AsyncService service) {
     return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
-        .addMethod(
-          getFunction1Service2Method(),
-          io.grpc.stub.ServerCalls.asyncServerStreamingCall(
-            new MethodHandlers<
-              my.project.MsgRequest,
-              my.project.MsgReply>(
-                service, METHODID_FUNCTION1SERVICE2)))
-        .addMethod(
-          getFunction2Service2Method(),
-          io.grpc.stub.ServerCalls.asyncClientStreamingCall(
-            new MethodHandlers<
-              my.project.MsgRequest,
-              my.project.MsgReply>(
-                service, METHODID_FUNCTION2SERVICE2)))
         .addMethod(
           getAddLocationMethod(),
           io.grpc.stub.ServerCalls.asyncUnaryCall(
@@ -559,8 +413,6 @@ public final class MyService2Grpc {
         if (result == null) {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new MyService2FileDescriptorSupplier())
-              .addMethod(getFunction1Service2Method())
-              .addMethod(getFunction2Service2Method())
               .addMethod(getAddLocationMethod())
               .addMethod(getDeleteLocationMethod())
               .addMethod(getSpecialSpotMethod())

@@ -16,37 +16,6 @@ public final class MyService3Grpc {
 
   // Static method descriptors that strictly reflect the proto.
   private static volatile io.grpc.MethodDescriptor<my.project.MsgRequest,
-      my.project.MsgReply> getFunction1Service3Method;
-
-  @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "function1Service3",
-      requestType = my.project.MsgRequest.class,
-      responseType = my.project.MsgReply.class,
-      methodType = io.grpc.MethodDescriptor.MethodType.BIDI_STREAMING)
-  public static io.grpc.MethodDescriptor<my.project.MsgRequest,
-      my.project.MsgReply> getFunction1Service3Method() {
-    io.grpc.MethodDescriptor<my.project.MsgRequest, my.project.MsgReply> getFunction1Service3Method;
-    if ((getFunction1Service3Method = MyService3Grpc.getFunction1Service3Method) == null) {
-      synchronized (MyService3Grpc.class) {
-        if ((getFunction1Service3Method = MyService3Grpc.getFunction1Service3Method) == null) {
-          MyService3Grpc.getFunction1Service3Method = getFunction1Service3Method =
-              io.grpc.MethodDescriptor.<my.project.MsgRequest, my.project.MsgReply>newBuilder()
-              .setType(io.grpc.MethodDescriptor.MethodType.BIDI_STREAMING)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "function1Service3"))
-              .setSampledToLocalTracing(true)
-              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  my.project.MsgRequest.getDefaultInstance()))
-              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  my.project.MsgReply.getDefaultInstance()))
-              .setSchemaDescriptor(new MyService3MethodDescriptorSupplier("function1Service3"))
-              .build();
-        }
-      }
-    }
-    return getFunction1Service3Method;
-  }
-
-  private static volatile io.grpc.MethodDescriptor<my.project.MsgRequest,
       my.project.MsgReply> getFreeSpotsMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
@@ -188,17 +157,6 @@ public final class MyService3Grpc {
   public interface AsyncService {
 
     /**
-     * <pre>
-     * Bidirectional streaming RPCs where both sides send a
-     * sequence of messages using a read-write stream
-     * </pre>
-     */
-    default io.grpc.stub.StreamObserver<my.project.MsgRequest> function1Service3(
-        io.grpc.stub.StreamObserver<my.project.MsgReply> responseObserver) {
-      return io.grpc.stub.ServerCalls.asyncUnimplementedStreamingCall(getFunction1Service3Method(), responseObserver);
-    }
-
-    /**
      */
     default io.grpc.stub.StreamObserver<my.project.MsgRequest> freeSpots(
         io.grpc.stub.StreamObserver<my.project.MsgReply> responseObserver) {
@@ -245,18 +203,6 @@ public final class MyService3Grpc {
     protected MyService3Stub build(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       return new MyService3Stub(channel, callOptions);
-    }
-
-    /**
-     * <pre>
-     * Bidirectional streaming RPCs where both sides send a
-     * sequence of messages using a read-write stream
-     * </pre>
-     */
-    public io.grpc.stub.StreamObserver<my.project.MsgRequest> function1Service3(
-        io.grpc.stub.StreamObserver<my.project.MsgReply> responseObserver) {
-      return io.grpc.stub.ClientCalls.asyncBidiStreamingCall(
-          getChannel().newCall(getFunction1Service3Method(), getCallOptions()), responseObserver);
     }
 
     /**
@@ -343,8 +289,7 @@ public final class MyService3Grpc {
 
   private static final int METHODID_COUNT_TIME = 0;
   private static final int METHODID_PAYMENT = 1;
-  private static final int METHODID_FUNCTION1SERVICE3 = 2;
-  private static final int METHODID_FREE_SPOTS = 3;
+  private static final int METHODID_FREE_SPOTS = 2;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -381,9 +326,6 @@ public final class MyService3Grpc {
     public io.grpc.stub.StreamObserver<Req> invoke(
         io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
-        case METHODID_FUNCTION1SERVICE3:
-          return (io.grpc.stub.StreamObserver<Req>) serviceImpl.function1Service3(
-              (io.grpc.stub.StreamObserver<my.project.MsgReply>) responseObserver);
         case METHODID_FREE_SPOTS:
           return (io.grpc.stub.StreamObserver<Req>) serviceImpl.freeSpots(
               (io.grpc.stub.StreamObserver<my.project.MsgReply>) responseObserver);
@@ -395,13 +337,6 @@ public final class MyService3Grpc {
 
   public static final io.grpc.ServerServiceDefinition bindService(AsyncService service) {
     return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
-        .addMethod(
-          getFunction1Service3Method(),
-          io.grpc.stub.ServerCalls.asyncBidiStreamingCall(
-            new MethodHandlers<
-              my.project.MsgRequest,
-              my.project.MsgReply>(
-                service, METHODID_FUNCTION1SERVICE3)))
         .addMethod(
           getFreeSpotsMethod(),
           io.grpc.stub.ServerCalls.asyncBidiStreamingCall(
@@ -471,7 +406,6 @@ public final class MyService3Grpc {
         if (result == null) {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new MyService3FileDescriptorSupplier())
-              .addMethod(getFunction1Service3Method())
               .addMethod(getFreeSpotsMethod())
               .addMethod(getCountTimeMethod())
               .addMethod(getPaymentMethod())

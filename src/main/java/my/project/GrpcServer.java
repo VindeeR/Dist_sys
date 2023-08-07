@@ -95,7 +95,7 @@ public class GrpcServer {
 		@Override
 		public void totalFloor (MsgRequest req, StreamObserver<MsgReply> responseObserver) {
 			logger.info("7 - Calling gRPC unary type (from the server side)");
-			MsgReply reply = MsgReply.newBuilder().setMessage(req.getMessage() + "\ntotal car parking lots that is being used " + rand.nextInt(10, 100) + " out of 500 \n(Stream completed)").build();
+			MsgReply reply = MsgReply.newBuilder().setMessage(req.getMessage() + " total car parking lots that is being used " + rand.nextInt(10, 100) + " out of 500  (Stream completed)").build();
 			responseObserver.onNext(reply);
 			responseObserver.onCompleted();
 		}
@@ -108,7 +108,7 @@ public class GrpcServer {
 
 				@Override
 				public void onNext(MsgRequest value) {
-					System.out.println("\nServer received: " + value.getMessage());
+					System.out.println(" Server received: " + value.getMessage());
 				}
 
 				@Override
@@ -118,7 +118,7 @@ public class GrpcServer {
 
 				@Override
 				public void onCompleted() {
-					MsgReply reply = MsgReply.newBuilder().setMessage("\nIt's " + rand.nextInt(0, 100) + "% \n(Stream completed)").build();
+					MsgReply reply = MsgReply.newBuilder().setMessage(" It's " + rand.nextInt(0, 100) + "% of the floor being used (Stream completed)").build();
 					responseObserver.onNext(reply);
 					responseObserver.onCompleted();
 				}
@@ -133,7 +133,7 @@ public class GrpcServer {
 
 				@Override
 				public void onNext(MsgRequest value) {
-					System.out.println("\nServer received: " + value.getMessage());
+					System.out.println(" Server received: " + value.getMessage());
 				}
 
 				@Override
@@ -143,7 +143,7 @@ public class GrpcServer {
 
 				@Override
 				public void onCompleted() {
-					MsgReply reply = MsgReply.newBuilder().setMessage("\nChanging Light colors! \n(Stream completed)").build();
+					MsgReply reply = MsgReply.newBuilder().setMessage(" Changing Light colors!  (Stream completed)").build();
 					responseObserver.onNext(reply);
 					responseObserver.onCompleted();
 				}
@@ -157,55 +157,11 @@ public class GrpcServer {
 		 * read a sequence of messages back
 		 * https://grpc.io/docs/what-is-grpc/core-concepts/
 		 */
-		@Override
-		public void function1Service2(MsgRequest req, StreamObserver<MsgReply> responseObserver) {
-			logger.info("Calling gRPC server streaming type (from the server side)");
-			MsgReply reply = MsgReply.newBuilder().setMessage(req.getMessage() + "(Streaming Server said: blah, blah)").build();
-			responseObserver.onNext(reply);
-
-			// send a stream (aka: bunch of messages) back to the client
-			for (int i=0; i<rand.nextInt(1, 10); i++){
-				reply = MsgReply.newBuilder().setMessage("(Streaming Server: and more blah, blah, blah)").build();
-				responseObserver.onNext(reply);
-			}
-
-			// no more messages
-			responseObserver.onCompleted();
-		}
-
-		/*
-		 * Client streaming RPCs where the client writes a sequence of messages and sends them to the server,
-		 * again using a provided stream
-		 * https://grpc.io/docs/what-is-grpc/core-concepts/
-		 */
-		@Override
-		public StreamObserver<MsgRequest> function2Service2(StreamObserver<MsgReply> responseObserver) {
-			logger.info("Calling gRPC client streaming type (from the server side)");
-			return new StreamObserver<MsgRequest>() {
-
-				@Override
-				public void onNext(MsgRequest value) {
-					System.out.println("Server received: " + value.getMessage());
-				}
-
-				@Override
-				public void onError(Throwable t) {
-					t.printStackTrace();
-				}
-
-				@Override
-				public void onCompleted() {
-					MsgReply reply = MsgReply.newBuilder().setMessage("(Stream completed)").build();
-					responseObserver.onNext(reply);
-					responseObserver.onCompleted();
-				}
-			};
-		}
-		
+	
 		@Override
 		public void addLocation(MsgRequest req, StreamObserver<MsgReply> responseObserver) {
 			logger.info("1 - Calling gRPC unary type (from the server side)");
-			MsgReply reply = MsgReply.newBuilder().setMessage("\n" + req.getMessage() + "Added parking space to be used" + rand.nextInt(10, 100)).build();
+			MsgReply reply = MsgReply.newBuilder().setMessage(" " + req.getMessage() + " Added parking space to be used " + rand.nextInt(500, 550)).build();
 			responseObserver.onNext(reply);
 			responseObserver.onCompleted();
 		}
@@ -213,7 +169,7 @@ public class GrpcServer {
 		@Override
 		public void deleteLocation(MsgRequest req, StreamObserver<MsgReply> responseObserver) {
 			logger.info("2 - Calling gRPC unary type (from the server side)");
-			MsgReply reply = MsgReply.newBuilder().setMessage("\n" + req.getMessage() + "Parking space deleted and connot be used anymore" + rand.nextInt(10, 100)).build();
+			MsgReply reply = MsgReply.newBuilder().setMessage(" " + req.getMessage() + " Parking space deleted and connot be used anymore " + rand.nextInt(1, 500)).build();
 			responseObserver.onNext(reply);
 			responseObserver.onCompleted();
 		}
@@ -224,8 +180,8 @@ public class GrpcServer {
 			return new StreamObserver<MsgRequest>() {
 				@Override
 				public void onNext(MsgRequest value) {
-					System.out.println("\nCreate new special spot out of spot: " + value.getMessage() + ")");
-					MsgReply reply = MsgReply.newBuilder().setMessage("successful creation").build();
+					System.out.println(" Create new special spot out of spot: " + value.getMessage() + ")");
+					MsgReply reply = MsgReply.newBuilder().setMessage("successful creation os a special spot").build();
 					responseObserver.onNext(reply);
 				}
 
@@ -247,30 +203,6 @@ public class GrpcServer {
 		 * Bidirectional streaming RPCs where both sides send a sequence of messages using a read-write stream
 		 * https://grpc.io/docs/what-is-grpc/core-concepts/
 		 */
-		@Override
-		public StreamObserver<MsgRequest> function1Service3(StreamObserver<MsgReply> responseObserver) {
-			logger.info("Calling gRPC bi-directional streaming type (from the server side)");
-			return new StreamObserver<MsgRequest>() {
-				@Override
-				public void onNext(MsgRequest value) {
-					System.out.println("(Bi-di Server Received: " + value.getMessage() + ")");
-					MsgReply reply = MsgReply.newBuilder().setMessage("(Bi-di Server said: blah, blah, blah)").build();
-					responseObserver.onNext(reply);
-					reply = MsgReply.newBuilder().setMessage("(Bi-di Server said: blah, blah, blah)").build();
-					responseObserver.onNext(reply);
-				}
-
-				@Override
-				public void onError(Throwable t) {
-					t.printStackTrace();
-				}
-
-				@Override
-				public void onCompleted() {
-					responseObserver.onCompleted();
-				}
-			};
-		}
 		
 		// count the amount of free spots
 		@Override
@@ -279,10 +211,10 @@ public class GrpcServer {
 			return new StreamObserver<MsgRequest>() {
 				@Override
 				public void onNext(MsgRequest value) {
-					System.out.println("\nRequest to count free spot received: " + value.getMessage() + ")");
+					System.out.println(" Request to count free spot received: " + value.getMessage() + ")");
 					MsgReply reply = MsgReply.newBuilder().setMessage("Free spots Count is: "+rand.nextInt(0,500)).build();
 					responseObserver.onNext(reply);
-					reply = MsgReply.newBuilder().setMessage("\nFree spots Count is: "+rand.nextInt(0,500)).build();
+					reply = MsgReply.newBuilder().setMessage(" Free spots Count is: "+rand.nextInt(0,500)).build();
 					responseObserver.onNext(reply);
 				}
 
@@ -302,7 +234,7 @@ public class GrpcServer {
 		@Override
 		public void countTime(MsgRequest req, StreamObserver<MsgReply> responseObserver) {
 			logger.info("5 - gRPC server streaming type (from the server side)");
-			MsgReply reply = MsgReply.newBuilder().setMessage(req.getMessage() + "\nThe amount of time each car is located is: ").build();
+			MsgReply reply = MsgReply.newBuilder().setMessage(req.getMessage() + " The amount of time each car is located is: ").build();
 			responseObserver.onNext(reply);
 
 			// send a stream (aka: bunch of messages) back to the client

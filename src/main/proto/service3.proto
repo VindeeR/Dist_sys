@@ -22,9 +22,6 @@ package project.myservice;
 import "service1.proto";
 
 service MyService3 {
-	// Bidirectional streaming RPCs where both sides send a
-	// sequence of messages using a read-write stream
-	rpc function1Service3 (stream MsgRequest) returns (stream MsgReply) {}
 	
  	rpc freeSpots (stream MsgRequest) returns (stream MsgReply) {}
  	rpc countTime (MsgRequest) returns (stream MsgReply) {}
