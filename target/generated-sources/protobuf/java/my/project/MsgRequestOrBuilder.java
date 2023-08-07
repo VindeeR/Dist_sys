@@ -4,7 +4,7 @@
 package my.project;
 
 public interface MsgRequestOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:project.MsgRequest)
+    // @@protoc_insertion_point(interface_extends:project.myservice.MsgRequest)
     com.google.protobuf.MessageOrBuilder {
 
   /**

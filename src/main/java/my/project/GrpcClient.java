@@ -41,83 +41,7 @@ public class GrpcClient {
 	    asyncService3Stub = MyService3Grpc.newStub(channel);	// async calls (for bidirectional streaming)
 	  }
 
-	  // total car parking lots that is being used (Unary RPC) from service1
-	  public void clientSideTotalFloor() {
-		  logger.info("Calling gRPC unary type (from the client side)");
 
-		  try {
-			  MsgRequest request = MsgRequest.newBuilder().setMessage("(Unary RPC Client said: How many spots are being used?)").build();
-			  MsgReply reply = blockingStubMyService1
-					  .withDeadlineAfter(1, TimeUnit.SECONDS)
-					  .totalFloor(request);
-			  System.out.println("Client Received: " + reply.getMessage());
-		  } catch (StatusRuntimeException e) {
-			  logger.log(Level.WARNING, "RPC failed: {0}", e.getStatus());
-			  return;
-		  }
-	  }
-	  
-	  // which floor percentage is bring used (Client streaming RPCs) from Service1
-	  public void clientSidePercentageFloor() {
-		  logger.info("Calling gRPC client streaming type (from the client side)");
-
-		  StreamObserver<MsgReply> responseObserver = new StreamObserver<MsgReply>() {
-			  @Override
-			  public void onNext(MsgReply value) {
-				  System.out.println("Received: " + value.getMessage());					
-			  }
-
-			  @Override
-			  public void onError(Throwable t) {
-				  t.printStackTrace();
-			  }
-
-			  @Override
-			  public void onCompleted() {
-				  System.out.println("Bye. Stream completed");
-			  }
-		  };
-
-		  // send a stream (aka: bunch of messages) back to the server
-		  StreamObserver<MsgRequest> requestObserver = asyncService2Stub.function2Service2(responseObserver);
-		  requestObserver.onNext(MsgRequest.newBuilder().setMessage("(Client said: How're you keeping?)").build());
-		  for (int i=0; i<rand.nextInt(1, 10); i++){
-			  requestObserver.onNext(MsgRequest.newBuilder().setMessage("(Client said: blah, blah, blah)").build());
-		  }
-
-		  requestObserver.onCompleted();
-	  }
-	  
-	  // verify if they activity nearby and turn off or on the lights (Client streaming RPCs) from Service1
-	  public void clientSideChangeLights() {
-		  logger.info("Calling gRPC client streaming type (from the client side)");
-
-		  StreamObserver<MsgReply> responseObserver = new StreamObserver<MsgReply>() {
-			  @Override
-			  public void onNext(MsgReply value) {
-				  System.out.println("Received: " + value.getMessage());					
-			  }
-
-			  @Override
-			  public void onError(Throwable t) {
-				  t.printStackTrace();
-			  }
-
-			  @Override
-			  public void onCompleted() {
-				  System.out.println("Bye. Stream completed");
-			  }
-		  };
-
-		  // send a stream (aka: bunch of messages) back to the server
-		  StreamObserver<MsgRequest> requestObserver = asyncService2Stub.function2Service2(responseObserver);
-		  requestObserver.onNext(MsgRequest.newBuilder().setMessage("(Client said: How're you keeping?)").build());
-		  for (int i=0; i<rand.nextInt(1, 10); i++){
-			  requestObserver.onNext(MsgRequest.newBuilder().setMessage("(Client said: blah, blah, blah)").build());
-		  }
-
-		  requestObserver.onCompleted();
-	  }
 
 	  // Run function1Service2 from Service2 (Server streaming RPC)
 	  public void clientSideFunction1Service2() {
@@ -198,13 +122,93 @@ public class GrpcClient {
 		  requestObserver.onCompleted();
 	  }
 	  
+	  // total car parking lots that is being used (Unary RPC) from service1
+	  public void clientSideTotalFloor() {
+		  logger.info("Calling gRPC unary type (from the client side)");
+
+		  try {
+			  MsgRequest request = MsgRequest.newBuilder().setMessage("(Unary RPC Client said: How many spots are being used?)").build();
+			  MsgReply reply = blockingStubMyService1
+					  .withDeadlineAfter(5, TimeUnit.SECONDS)
+					  .totalFloor(request);
+			  System.out.println("Client Received: " + reply.getMessage());
+		  } catch (StatusRuntimeException e) {
+			  logger.log(Level.WARNING, "RPC failed: {0}", e.getStatus());
+			  return;
+		  }
+	  }
+	  
+	  // which floor percentage is bring used (Client streaming RPCs) from Service1
+	  public void clientSidePercentageFloor() {
+		  logger.info("Calling gRPC client streaming type (from the client side)");
+
+		  StreamObserver<MsgReply> responseObserver = new StreamObserver<MsgReply>() {
+			  @Override
+			  public void onNext(MsgReply value) {
+				  System.out.println("Received: " + value.getMessage());					
+			  }
+
+			  @Override
+			  public void onError(Throwable t) {
+				  t.printStackTrace();
+			  }
+
+			  @Override
+			  public void onCompleted() {
+				  System.out.println("Bye. Stream completed");
+			  }
+		  };
+
+		  // send a stream (aka: bunch of messages) back to the server
+		  StreamObserver<MsgRequest> requestObserver = asyncService2Stub.function2Service2(responseObserver);
+		  requestObserver.onNext(MsgRequest.newBuilder().setMessage("(Client said: How're you keeping?)").build());
+		  for (int i=0; i<rand.nextInt(1, 10); i++){
+			  requestObserver.onNext(MsgRequest.newBuilder().setMessage("(Client said: blah, blah, blah)").build());
+		  }
+
+		  requestObserver.onCompleted();
+	  }
+	  
+	  // verify if they activity nearby and turn off or on the lights (Client streaming RPCs) from Service1
+	  public void clientSideChangeLights() {
+		  logger.info("Calling gRPC client streaming type (from the client side)");
+
+		  StreamObserver<MsgReply> responseObserver = new StreamObserver<MsgReply>() {
+			  @Override
+			  public void onNext(MsgReply value) {
+				  System.out.println("Received: " + value.getMessage());					
+			  }
+
+			  @Override
+			  public void onError(Throwable t) {
+				  t.printStackTrace();
+			  }
+
+			  @Override
+			  public void onCompleted() {
+				  System.out.println("Bye. Stream completed");
+			  }
+		  };
+
+		  // send a stream (aka: bunch of messages) back to the server
+		  StreamObserver<MsgRequest> requestObserver = asyncService2Stub.function2Service2(responseObserver);
+		  requestObserver.onNext(MsgRequest.newBuilder().setMessage("(Client said: How're you keeping?)").build());
+		  for (int i=0; i<rand.nextInt(1, 10); i++){
+			  requestObserver.onNext(MsgRequest.newBuilder().setMessage("(Client said: blah, blah, blah)").build());
+		  }
+
+		  requestObserver.onCompleted();
+	  }
+
+
+
 	  private void clientSidePayment() {
 			logger.info("Calling gRPC unary type (from the client side)");
 
 			  try {
 				  MsgRequest request = MsgRequest.newBuilder().setMessage("(Unary RPC Client said: How many spots are being used?)").build();
 				  MsgReply reply = blockingStubMyService3
-						  .withDeadlineAfter(1, TimeUnit.SECONDS)
+						  .withDeadlineAfter(5, TimeUnit.SECONDS)
 						  .payment(request);
 				  System.out.println("Client Received: " + reply.getMessage());
 			  } catch (StatusRuntimeException e) {
@@ -220,7 +224,7 @@ public class GrpcClient {
 			  try {
 				  MsgRequest request = MsgRequest.newBuilder().setMessage("(Client said: How're you keeping?)").build();
 				  Iterator<MsgReply> reply = blockingStubMyService3
-						  .withDeadlineAfter(1, TimeUnit.SECONDS)
+						  .withDeadlineAfter(5, TimeUnit.SECONDS)
 						  .countTime(request);
 					while(reply.hasNext()) {
 						System.out.println(reply.next());		// print all messages from the server				
@@ -269,7 +273,7 @@ public class GrpcClient {
 			  try {
 				  MsgRequest request = MsgRequest.newBuilder().setMessage("(Unary RPC Client said: How many spots are being used?)").build();
 				  MsgReply reply = blockingStubMyService2
-						  .withDeadlineAfter(1, TimeUnit.SECONDS)
+						  .withDeadlineAfter(5, TimeUnit.SECONDS)
 						  .addLocation(request);
 				  System.out.println("Client Received: " + reply.getMessage());
 			  } catch (StatusRuntimeException e) {
@@ -284,7 +288,7 @@ public class GrpcClient {
 			  try {
 				  MsgRequest request = MsgRequest.newBuilder().setMessage("(Unary RPC Client said: How many spots are being used?)").build();
 				  MsgReply reply = blockingStubMyService2
-						  .withDeadlineAfter(1, TimeUnit.SECONDS)
+						  .withDeadlineAfter(5, TimeUnit.SECONDS)
 						  .deleteLocation(request);
 				  System.out.println("Client Received: " + reply.getMessage());
 			  } catch (StatusRuntimeException e) {

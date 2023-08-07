@@ -8,11 +8,11 @@ package my.project;
  * The response message containing the greetings
  * </pre>
  *
- * Protobuf type {@code project.MsgReply}
+ * Protobuf type {@code project.myservice.MsgReply}
  */
 public final class MsgReply extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:project.MsgReply)
+    // @@protoc_insertion_point(message_implements:project.myservice.MsgReply)
     MsgReplyOrBuilder {
 private static final long serialVersionUID = 0L;
   // Use MsgReply.newBuilder() to construct.
@@ -32,13 +32,13 @@ private static final long serialVersionUID = 0L;
 
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return my.project.MyProjectProto.internal_static_project_MsgReply_descriptor;
+    return my.project.MyProjectProto.internal_static_project_myservice_MsgReply_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return my.project.MyProjectProto.internal_static_project_MsgReply_fieldAccessorTable
+    return my.project.MyProjectProto.internal_static_project_myservice_MsgReply_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
             my.project.MsgReply.class, my.project.MsgReply.Builder.class);
   }
@@ -241,21 +241,21 @@ private static final long serialVersionUID = 0L;
    * The response message containing the greetings
    * </pre>
    *
-   * Protobuf type {@code project.MsgReply}
+   * Protobuf type {@code project.myservice.MsgReply}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:project.MsgReply)
+      // @@protoc_insertion_point(builder_implements:project.myservice.MsgReply)
       my.project.MsgReplyOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return my.project.MyProjectProto.internal_static_project_MsgReply_descriptor;
+      return my.project.MyProjectProto.internal_static_project_myservice_MsgReply_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return my.project.MyProjectProto.internal_static_project_MsgReply_fieldAccessorTable
+      return my.project.MyProjectProto.internal_static_project_myservice_MsgReply_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               my.project.MsgReply.class, my.project.MsgReply.Builder.class);
     }
@@ -281,7 +281,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return my.project.MyProjectProto.internal_static_project_MsgReply_descriptor;
+      return my.project.MyProjectProto.internal_static_project_myservice_MsgReply_descriptor;
     }
 
     @java.lang.Override
@@ -462,10 +462,10 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:project.MsgReply)
+    // @@protoc_insertion_point(builder_scope:project.myservice.MsgReply)
   }
 
-  // @@protoc_insertion_point(class_scope:project.MsgReply)
+  // @@protoc_insertion_point(class_scope:project.myservice.MsgReply)
   private static final my.project.MsgReply DEFAULT_INSTANCE;
   static {
     DEFAULT_INSTANCE = new my.project.MsgReply();

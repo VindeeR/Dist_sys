@@ -4,7 +4,7 @@
 package my.project;
 
 public interface MsgReplyOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:project.MsgReply)
+    // @@protoc_insertion_point(interface_extends:project.myservice.MsgReply)
     com.google.protobuf.MessageOrBuilder {
 
   /**

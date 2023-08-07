@@ -15,15 +15,15 @@ public final class MyProjectProto {
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_project_MsgRequest_descriptor;
+    internal_static_project_myservice_MsgRequest_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_project_MsgRequest_fieldAccessorTable;
+      internal_static_project_myservice_MsgRequest_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_project_MsgReply_descriptor;
+    internal_static_project_myservice_MsgReply_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_project_MsgReply_fieldAccessorTable;
+      internal_static_project_myservice_MsgReply_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -33,45 +33,32 @@ public final class MyProjectProto {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\020helloworld.proto\022\007project\"\035\n\nMsgReques" +
-      "t\022\017\n\007message\030\001 \001(\t\"\033\n\010MsgReply\022\017\n\007messag" +
-      "e\030\001 \001(\t2\277\001\n\nMyService1\0226\n\ntotalFloor\022\023.p" +
-      "roject.MsgRequest\032\021.project.MsgReply\"\000\022=" +
-      "\n\017percentageFloor\022\023.project.MsgRequest\032\021" +
-      ".project.MsgReply\"\000(\001\022:\n\014changeLights\022\023." +
-      "project.MsgRequest\032\021.project.MsgReply\"\000(" +
-      "\0012\300\002\n\nMyService2\022?\n\021function1Service2\022\023." +
-      "project.MsgRequest\032\021.project.MsgReply\"\0000" +
-      "\001\022?\n\021function2Service2\022\023.project.MsgRequ" +
-      "est\032\021.project.MsgReply\"\000(\001\0227\n\013addLocatio" +
-      "n\022\023.project.MsgRequest\032\021.project.MsgRepl" +
-      "y\"\000\022:\n\016deleteLocation\022\023.project.MsgReque" +
-      "st\032\021.project.MsgReply\"\000\022;\n\013specialSpot\022\023" +
-      ".project.MsgRequest\032\021.project.MsgReply\"\000" +
-      "(\0010\0012\370\001\n\nMyService3\022A\n\021function1Service3" +
-      "\022\023.project.MsgRequest\032\021.project.MsgReply" +
-      "\"\000(\0010\001\0229\n\tfreeSpots\022\023.project.MsgRequest" +
-      "\032\021.project.MsgReply\"\000(\0010\001\0227\n\tcountTime\022\023" +
-      ".project.MsgRequest\032\021.project.MsgReply\"\000" +
-      "0\001\0223\n\007payment\022\023.project.MsgRequest\032\021.pro" +
-      "ject.MsgReply\"\000B$\n\nmy.projectB\016MyProject" +
-      "ProtoP\001\242\002\003MyPb\006proto3"
+      "\n\020helloworld.proto\022\021project.myservice\"\035\n" +
+      "\nMsgRequest\022\017\n\007message\030\001 \001(\t\"\033\n\010MsgReply" +
+      "\022\017\n\007message\030\001 \001(\t2\373\001\n\nMyService1\022J\n\ntota" +
+      "lFloor\022\035.project.myservice.MsgRequest\032\033." +
+      "project.myservice.MsgReply\"\000\022Q\n\017percenta" +
+      "geFloor\022\035.project.myservice.MsgRequest\032\033" +
+      ".project.myservice.MsgReply\"\000(\001\022N\n\014chang" +
+      "eLights\022\035.project.myservice.MsgRequest\032\033" +
+      ".project.myservice.MsgReply\"\000(\001B$\n\nmy.pr" +
+      "ojectB\016MyProjectProtoP\001\242\002\003MyPb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
         });
-    internal_static_project_MsgRequest_descriptor =
+    internal_static_project_myservice_MsgRequest_descriptor =
       getDescriptor().getMessageTypes().get(0);
-    internal_static_project_MsgRequest_fieldAccessorTable = new
+    internal_static_project_myservice_MsgRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_project_MsgRequest_descriptor,
+        internal_static_project_myservice_MsgRequest_descriptor,
         new java.lang.String[] { "Message", });
-    internal_static_project_MsgReply_descriptor =
+    internal_static_project_myservice_MsgReply_descriptor =
       getDescriptor().getMessageTypes().get(1);
-    internal_static_project_MsgReply_fieldAccessorTable = new
+    internal_static_project_myservice_MsgReply_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_project_MsgReply_descriptor,
+        internal_static_project_myservice_MsgReply_descriptor,
         new java.lang.String[] { "Message", });
   }
 

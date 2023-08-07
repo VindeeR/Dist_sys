@@ -16,32 +16,17 @@
 
 syntax = "proto3";
 
-option java_multiple_files = true;
-option java_outer_classname = "MyProjectProto";
-option objc_class_prefix = "MyP";
 option java_package = "my.project";
 package project.myservice;
 
-// Reference https://grpc.io/docs/what-is-grpc/core-concepts/
+import "helloworld.proto";
 
-service MyService1 {
-	// Unary RPCs where the client sends a single request to
-	// the server and gets a single response back, just like
-	// a normal function call.
-	rpc totalFloor (MsgRequest) returns (MsgReply) {}
+service MyService3 {
+	// Bidirectional streaming RPCs where both sides send a
+	// sequence of messages using a read-write stream
+	rpc function1Service3 (stream MsgRequest) returns (stream MsgReply) {}
 	
-	rpc percentageFloor (stream MsgRequest) returns (MsgReply) {}
-	
-	rpc changeLights (stream MsgRequest) returns (MsgReply) {}
-	
-}
-
-// The request message containing the user's name.
-message MsgRequest {
-  	string message = 1;
-}
-
-// The response message containing the greetings
-message MsgReply {
-  string message = 1;
+ 	rpc freeSpots (stream MsgRequest) returns (stream MsgReply) {}
+ 	rpc countTime (MsgRequest) returns (stream MsgReply) {}
+ 	rpc payment (MsgRequest) returns (MsgReply) {}
 }

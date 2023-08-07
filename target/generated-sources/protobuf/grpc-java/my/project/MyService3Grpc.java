@@ -6,13 +6,13 @@ import static io.grpc.MethodDescriptor.generateFullMethodName;
  */
 @javax.annotation.Generated(
     value = "by gRPC proto compiler (version 1.55.1)",
-    comments = "Source: helloworld.proto")
+    comments = "Source: service3.proto")
 @io.grpc.stub.annotations.GrpcGenerated
 public final class MyService3Grpc {
 
   private MyService3Grpc() {}
 
-  public static final String SERVICE_NAME = "project.MyService3";
+  public static final String SERVICE_NAME = "project.myservice.MyService3";
 
   // Static method descriptors that strictly reflect the proto.
   private static volatile io.grpc.MethodDescriptor<my.project.MsgRequest,
@@ -432,7 +432,7 @@ public final class MyService3Grpc {
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.FileDescriptor getFileDescriptor() {
-      return my.project.MyProjectProto.getDescriptor();
+      return my.project.Service3.getDescriptor();
     }
 
     @java.lang.Override

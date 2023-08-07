@@ -16,32 +16,22 @@
 
 syntax = "proto3";
 
-option java_multiple_files = true;
-option java_outer_classname = "MyProjectProto";
-option objc_class_prefix = "MyP";
 option java_package = "my.project";
 package project.myservice;
 
-// Reference https://grpc.io/docs/what-is-grpc/core-concepts/
+import "helloworld.proto";
 
-service MyService1 {
-	// Unary RPCs where the client sends a single request to
-	// the server and gets a single response back, just like
-	// a normal function call.
-	rpc totalFloor (MsgRequest) returns (MsgReply) {}
-	
-	rpc percentageFloor (stream MsgRequest) returns (MsgReply) {}
-	
-	rpc changeLights (stream MsgRequest) returns (MsgReply) {}
-	
-}
-
-// The request message containing the user's name.
-message MsgRequest {
-  	string message = 1;
-}
-
-// The response message containing the greetings
-message MsgReply {
-  string message = 1;
+service MyService2 {
+	// Server streaming RPCs where the client sends a request
+	// to the server and gets a stream to read a sequence of
+	// messages back
+	rpc function1Service2 (MsgRequest) returns (stream MsgReply) {}
+ 
+ 	// Client streaming RPCs where the client writes a sequence
+ 	// of messages and sends them to the server
+ 	rpc function2Service2 (stream MsgRequest) returns (MsgReply) {}
+ 	
+ 	rpc addLocation (MsgRequest) returns (MsgReply) {}
+ 	rpc deleteLocation (MsgRequest) returns (MsgReply) {}
+ 	rpc specialSpot (stream MsgRequest) returns (stream MsgReply) {}
 }

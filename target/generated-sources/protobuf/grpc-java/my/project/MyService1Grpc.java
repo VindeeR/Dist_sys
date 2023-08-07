@@ -12,7 +12,7 @@ public final class MyService1Grpc {
 
   private MyService1Grpc() {}
 
-  public static final String SERVICE_NAME = "project.MyService1";
+  public static final String SERVICE_NAME = "project.myservice.MyService1";
 
   // Static method descriptors that strictly reflect the proto.
   private static volatile io.grpc.MethodDescriptor<my.project.MsgRequest,

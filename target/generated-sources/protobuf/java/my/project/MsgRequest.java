@@ -8,11 +8,11 @@ package my.project;
  * The request message containing the user's name.
  * </pre>
  *
- * Protobuf type {@code project.MsgRequest}
+ * Protobuf type {@code project.myservice.MsgRequest}
  */
 public final class MsgRequest extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:project.MsgRequest)
+    // @@protoc_insertion_point(message_implements:project.myservice.MsgRequest)
     MsgRequestOrBuilder {
 private static final long serialVersionUID = 0L;
   // Use MsgRequest.newBuilder() to construct.
@@ -32,13 +32,13 @@ private static final long serialVersionUID = 0L;
 
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return my.project.MyProjectProto.internal_static_project_MsgRequest_descriptor;
+    return my.project.MyProjectProto.internal_static_project_myservice_MsgRequest_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return my.project.MyProjectProto.internal_static_project_MsgRequest_fieldAccessorTable
+    return my.project.MyProjectProto.internal_static_project_myservice_MsgRequest_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
             my.project.MsgRequest.class, my.project.MsgRequest.Builder.class);
   }
@@ -241,21 +241,21 @@ private static final long serialVersionUID = 0L;
    * The request message containing the user's name.
    * </pre>
    *
-   * Protobuf type {@code project.MsgRequest}
+   * Protobuf type {@code project.myservice.MsgRequest}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:project.MsgRequest)
+      // @@protoc_insertion_point(builder_implements:project.myservice.MsgRequest)
       my.project.MsgRequestOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return my.project.MyProjectProto.internal_static_project_MsgRequest_descriptor;
+      return my.project.MyProjectProto.internal_static_project_myservice_MsgRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return my.project.MyProjectProto.internal_static_project_MsgRequest_fieldAccessorTable
+      return my.project.MyProjectProto.internal_static_project_myservice_MsgRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               my.project.MsgRequest.class, my.project.MsgRequest.Builder.class);
     }
@@ -281,7 +281,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return my.project.MyProjectProto.internal_static_project_MsgRequest_descriptor;
+      return my.project.MyProjectProto.internal_static_project_myservice_MsgRequest_descriptor;
     }
 
     @java.lang.Override
@@ -462,10 +462,10 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:project.MsgRequest)
+    // @@protoc_insertion_point(builder_scope:project.myservice.MsgRequest)
   }
 
-  // @@protoc_insertion_point(class_scope:project.MsgRequest)
+  // @@protoc_insertion_point(class_scope:project.myservice.MsgRequest)
   private static final my.project.MsgRequest DEFAULT_INSTANCE;
   static {
     DEFAULT_INSTANCE = new my.project.MsgRequest();
