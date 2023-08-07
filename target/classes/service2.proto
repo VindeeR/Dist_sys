@@ -19,7 +19,7 @@ syntax = "proto3";
 option java_package = "my.project";
 package project.myservice;
 
-import "helloworld.proto";
+import "service1.proto";
 
 service MyService2 {
 	// Server streaming RPCs where the client sends a request

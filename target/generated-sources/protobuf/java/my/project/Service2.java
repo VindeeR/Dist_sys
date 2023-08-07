@@ -23,19 +23,19 @@ public final class Service2 {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\016service2.proto\022\021project.myservice\032\020hel" +
-      "loworld.proto2\244\003\n\nMyService2\022S\n\021function" +
-      "1Service2\022\035.project.myservice.MsgRequest" +
-      "\032\033.project.myservice.MsgReply\"\0000\001\022S\n\021fun" +
-      "ction2Service2\022\035.project.myservice.MsgRe" +
-      "quest\032\033.project.myservice.MsgReply\"\000(\001\022K" +
-      "\n\013addLocation\022\035.project.myservice.MsgReq" +
-      "uest\032\033.project.myservice.MsgReply\"\000\022N\n\016d" +
-      "eleteLocation\022\035.project.myservice.MsgReq" +
-      "uest\032\033.project.myservice.MsgReply\"\000\022O\n\013s" +
-      "pecialSpot\022\035.project.myservice.MsgReques" +
-      "t\032\033.project.myservice.MsgReply\"\000(\0010\001B\014\n\n" +
-      "my.projectb\006proto3"
+      "\n\016service2.proto\022\021project.myservice\032\016ser" +
+      "vice1.proto2\244\003\n\nMyService2\022S\n\021function1S" +
+      "ervice2\022\035.project.myservice.MsgRequest\032\033" +
+      ".project.myservice.MsgReply\"\0000\001\022S\n\021funct" +
+      "ion2Service2\022\035.project.myservice.MsgRequ" +
+      "est\032\033.project.myservice.MsgReply\"\000(\001\022K\n\013" +
+      "addLocation\022\035.project.myservice.MsgReque" +
+      "st\032\033.project.myservice.MsgReply\"\000\022N\n\016del" +
+      "eteLocation\022\035.project.myservice.MsgReque" +
+      "st\032\033.project.myservice.MsgReply\"\000\022O\n\013spe" +
+      "cialSpot\022\035.project.myservice.MsgRequest\032" +
+      "\033.project.myservice.MsgReply\"\000(\0010\001B\014\n\nmy" +
+      ".projectb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

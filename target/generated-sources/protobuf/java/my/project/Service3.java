@@ -23,17 +23,17 @@ public final class Service3 {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\016service3.proto\022\021project.myservice\032\020hel" +
-      "loworld.proto2\310\002\n\nMyService3\022U\n\021function" +
-      "1Service3\022\035.project.myservice.MsgRequest" +
-      "\032\033.project.myservice.MsgReply\"\000(\0010\001\022M\n\tf" +
-      "reeSpots\022\035.project.myservice.MsgRequest\032" +
-      "\033.project.myservice.MsgReply\"\000(\0010\001\022K\n\tco" +
-      "untTime\022\035.project.myservice.MsgRequest\032\033" +
-      ".project.myservice.MsgReply\"\0000\001\022G\n\007payme" +
-      "nt\022\035.project.myservice.MsgRequest\032\033.proj" +
-      "ect.myservice.MsgReply\"\000B\014\n\nmy.projectb\006" +
-      "proto3"
+      "\n\016service3.proto\022\021project.myservice\032\016ser" +
+      "vice1.proto2\310\002\n\nMyService3\022U\n\021function1S" +
+      "ervice3\022\035.project.myservice.MsgRequest\032\033" +
+      ".project.myservice.MsgReply\"\000(\0010\001\022M\n\tfre" +
+      "eSpots\022\035.project.myservice.MsgRequest\032\033." +
+      "project.myservice.MsgReply\"\000(\0010\001\022K\n\tcoun" +
+      "tTime\022\035.project.myservice.MsgRequest\032\033.p" +
+      "roject.myservice.MsgReply\"\0000\001\022G\n\007payment" +
+      "\022\035.project.myservice.MsgRequest\032\033.projec" +
+      "t.myservice.MsgReply\"\000B\014\n\nmy.projectb\006pr" +
+      "oto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

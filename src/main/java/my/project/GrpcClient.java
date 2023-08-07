@@ -13,6 +13,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import my.project.MyService1Grpc.MyService1Stub;	// async stub for client-streaming services
 import my.project.MyService2Grpc.MyService2Stub;	// async stub for client-streaming services
 import my.project.MyService3Grpc.MyService3Stub;	// async stub for client-streaming services
 
@@ -25,6 +26,7 @@ public class GrpcClient {
 	  private final MyService1Grpc.MyService1BlockingStub blockingStubMyService1;
 	  private final MyService2Grpc.MyService2BlockingStub blockingStubMyService2;
 	  private final MyService3Grpc.MyService3BlockingStub blockingStubMyService3;
+	  private final MyService1Stub asyncService1Stub;
 	  private final MyService2Stub asyncService2Stub;
 	  private final MyService3Stub asyncService3Stub;
 	  static Random rand = new Random();
@@ -37,6 +39,7 @@ public class GrpcClient {
 	    blockingStubMyService3 = MyService3Grpc.newBlockingStub(channel);
 	    //MyService3Grpc.newBlockingStub(channel);
 
+	    asyncService1Stub = MyService1Grpc.newStub(channel);	// async calls (for client-streaming)
 	    asyncService2Stub = MyService2Grpc.newStub(channel);	// async calls (for client-streaming)
 	    asyncService3Stub = MyService3Grpc.newStub(channel);	// async calls (for bidirectional streaming)
 	  }
@@ -121,7 +124,6 @@ public class GrpcClient {
 
 		  requestObserver.onCompleted();
 	  }
-	  
 	  // total car parking lots that is being used (Unary RPC) from service1
 	  public void clientSideTotalFloor() {
 		  logger.info("Calling gRPC unary type (from the client side)");
@@ -141,29 +143,27 @@ public class GrpcClient {
 	  // which floor percentage is bring used (Client streaming RPCs) from Service1
 	  public void clientSidePercentageFloor() {
 		  logger.info("Calling gRPC client streaming type (from the client side)");
+		  StreamObserver<MsgRequest> requestObserver =
+				  asyncService1Stub.percentageFloor(new StreamObserver<MsgReply>() {
+					@Override
+					public void onNext(MsgReply value) {
+						System.out.println("Bidi Client Received: " + value.getMessage());
+					}
 
-		  StreamObserver<MsgReply> responseObserver = new StreamObserver<MsgReply>() {
-			  @Override
-			  public void onNext(MsgReply value) {
-				  System.out.println("Received: " + value.getMessage());					
-			  }
+					@Override
+					public void onError(Throwable t) {
+						t.printStackTrace();
+					}
 
-			  @Override
-			  public void onError(Throwable t) {
-				  t.printStackTrace();
-			  }
-
-			  @Override
-			  public void onCompleted() {
-				  System.out.println("Bye. Stream completed");
-			  }
-		  };
-
-		  // send a stream (aka: bunch of messages) back to the server
-		  StreamObserver<MsgRequest> requestObserver = asyncService2Stub.function2Service2(responseObserver);
-		  requestObserver.onNext(MsgRequest.newBuilder().setMessage("(Client said: How're you keeping?)").build());
+					@Override
+					public void onCompleted() {
+						System.out.println("Bidi Client said: Bye. Stream completed");
+					}
+				  });
+		  
+		  requestObserver.onNext(MsgRequest.newBuilder().setMessage("(Bidi Client said: What's the craic?)").build());
 		  for (int i=0; i<rand.nextInt(1, 10); i++){
-			  requestObserver.onNext(MsgRequest.newBuilder().setMessage("(Client said: blah, blah, blah)").build());
+			  requestObserver.onNext(MsgRequest.newBuilder().setMessage("(Bidi Client said: blah, blah, blah)").build());
 		  }
 
 		  requestObserver.onCompleted();
@@ -172,29 +172,27 @@ public class GrpcClient {
 	  // verify if they activity nearby and turn off or on the lights (Client streaming RPCs) from Service1
 	  public void clientSideChangeLights() {
 		  logger.info("Calling gRPC client streaming type (from the client side)");
+		  StreamObserver<MsgRequest> requestObserver =
+				  asyncService1Stub.changeLights(new StreamObserver<MsgReply>() {
+					@Override
+					public void onNext(MsgReply value) {
+						System.out.println("Bidi Client Received: " + value.getMessage());
+					}
 
-		  StreamObserver<MsgReply> responseObserver = new StreamObserver<MsgReply>() {
-			  @Override
-			  public void onNext(MsgReply value) {
-				  System.out.println("Received: " + value.getMessage());					
-			  }
+					@Override
+					public void onError(Throwable t) {
+						t.printStackTrace();
+					}
 
-			  @Override
-			  public void onError(Throwable t) {
-				  t.printStackTrace();
-			  }
-
-			  @Override
-			  public void onCompleted() {
-				  System.out.println("Bye. Stream completed");
-			  }
-		  };
-
-		  // send a stream (aka: bunch of messages) back to the server
-		  StreamObserver<MsgRequest> requestObserver = asyncService2Stub.function2Service2(responseObserver);
-		  requestObserver.onNext(MsgRequest.newBuilder().setMessage("(Client said: How're you keeping?)").build());
+					@Override
+					public void onCompleted() {
+						System.out.println("Bidi Client said: Bye. Stream completed");
+					}
+				  });
+		  
+		  requestObserver.onNext(MsgRequest.newBuilder().setMessage("(Bidi Client said: What's the craic?)").build());
 		  for (int i=0; i<rand.nextInt(1, 10); i++){
-			  requestObserver.onNext(MsgRequest.newBuilder().setMessage("(Client said: blah, blah, blah)").build());
+			  requestObserver.onNext(MsgRequest.newBuilder().setMessage("(Bidi Client said: blah, blah, blah)").build());
 		  }
 
 		  requestObserver.onCompleted();

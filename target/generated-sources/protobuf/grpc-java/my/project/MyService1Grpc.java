@@ -3,10 +3,15 @@ package my.project;
 import static io.grpc.MethodDescriptor.generateFullMethodName;
 
 /**
+ * <pre>
+ * Unary RPCs where the client sends a single request to
+ * the server and gets a single response back, just like
+ * a normal function call.
+ * </pre>
  */
 @javax.annotation.Generated(
     value = "by gRPC proto compiler (version 1.55.1)",
-    comments = "Source: helloworld.proto")
+    comments = "Source: service1.proto")
 @io.grpc.stub.annotations.GrpcGenerated
 public final class MyService1Grpc {
 
@@ -153,15 +158,15 @@ public final class MyService1Grpc {
   }
 
   /**
+   * <pre>
+   * Unary RPCs where the client sends a single request to
+   * the server and gets a single response back, just like
+   * a normal function call.
+   * </pre>
    */
   public interface AsyncService {
 
     /**
-     * <pre>
-     * Unary RPCs where the client sends a single request to
-     * the server and gets a single response back, just like
-     * a normal function call.
-     * </pre>
      */
     default void totalFloor(my.project.MsgRequest request,
         io.grpc.stub.StreamObserver<my.project.MsgReply> responseObserver) {
@@ -185,6 +190,11 @@ public final class MyService1Grpc {
 
   /**
    * Base class for the server implementation of the service MyService1.
+   * <pre>
+   * Unary RPCs where the client sends a single request to
+   * the server and gets a single response back, just like
+   * a normal function call.
+   * </pre>
    */
   public static abstract class MyService1ImplBase
       implements io.grpc.BindableService, AsyncService {
@@ -196,6 +206,11 @@ public final class MyService1Grpc {
 
   /**
    * A stub to allow clients to do asynchronous rpc calls to service MyService1.
+   * <pre>
+   * Unary RPCs where the client sends a single request to
+   * the server and gets a single response back, just like
+   * a normal function call.
+   * </pre>
    */
   public static final class MyService1Stub
       extends io.grpc.stub.AbstractAsyncStub<MyService1Stub> {
@@ -211,11 +226,6 @@ public final class MyService1Grpc {
     }
 
     /**
-     * <pre>
-     * Unary RPCs where the client sends a single request to
-     * the server and gets a single response back, just like
-     * a normal function call.
-     * </pre>
      */
     public void totalFloor(my.project.MsgRequest request,
         io.grpc.stub.StreamObserver<my.project.MsgReply> responseObserver) {
@@ -242,6 +252,11 @@ public final class MyService1Grpc {
 
   /**
    * A stub to allow clients to do synchronous rpc calls to service MyService1.
+   * <pre>
+   * Unary RPCs where the client sends a single request to
+   * the server and gets a single response back, just like
+   * a normal function call.
+   * </pre>
    */
   public static final class MyService1BlockingStub
       extends io.grpc.stub.AbstractBlockingStub<MyService1BlockingStub> {
@@ -257,11 +272,6 @@ public final class MyService1Grpc {
     }
 
     /**
-     * <pre>
-     * Unary RPCs where the client sends a single request to
-     * the server and gets a single response back, just like
-     * a normal function call.
-     * </pre>
      */
     public my.project.MsgReply totalFloor(my.project.MsgRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
@@ -271,6 +281,11 @@ public final class MyService1Grpc {
 
   /**
    * A stub to allow clients to do ListenableFuture-style rpc calls to service MyService1.
+   * <pre>
+   * Unary RPCs where the client sends a single request to
+   * the server and gets a single response back, just like
+   * a normal function call.
+   * </pre>
    */
   public static final class MyService1FutureStub
       extends io.grpc.stub.AbstractFutureStub<MyService1FutureStub> {
@@ -286,11 +301,6 @@ public final class MyService1Grpc {
     }
 
     /**
-     * <pre>
-     * Unary RPCs where the client sends a single request to
-     * the server and gets a single response back, just like
-     * a normal function call.
-     * </pre>
      */
     public com.google.common.util.concurrent.ListenableFuture<my.project.MsgReply> totalFloor(
         my.project.MsgRequest request) {

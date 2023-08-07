@@ -93,7 +93,7 @@ public class GrpcServer {
 		
 		// total car parking lots that is being used (Unary RPC)
 		@Override
-		public void totalFloor(MsgRequest req, StreamObserver<MsgReply> responseObserver) {
+		public void totalFloor (MsgRequest req, StreamObserver<MsgReply> responseObserver) {
 			logger.info("7 - Calling gRPC unary type (from the server side)");
 			MsgReply reply = MsgReply.newBuilder().setMessage(req.getMessage() + "\ntotal car parking lots that is being used " + rand.nextInt(10, 100) + " out of 500 \n(Stream completed)").build();
 			responseObserver.onNext(reply);

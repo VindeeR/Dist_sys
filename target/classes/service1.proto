@@ -28,6 +28,7 @@ service MyService1 {
 	// Unary RPCs where the client sends a single request to
 	// the server and gets a single response back, just like
 	// a normal function call.
+	
 	rpc totalFloor (MsgRequest) returns (MsgReply) {}
 	
 	rpc percentageFloor (stream MsgRequest) returns (MsgReply) {}

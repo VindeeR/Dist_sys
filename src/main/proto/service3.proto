@@ -19,7 +19,7 @@ syntax = "proto3";
 option java_package = "my.project";
 package project.myservice;
 
-import "helloworld.proto";
+import "service1.proto";
 
 service MyService3 {
 	// Bidirectional streaming RPCs where both sides send a
