@@ -23,6 +23,7 @@ import "service1.proto";
 
 service MyService2 {
  	
+ 	// client-streaming type
  	rpc addLocation (MsgRequest) returns (MsgReply) {}
  	rpc deleteLocation (MsgRequest) returns (MsgReply) {}
  	rpc specialSpot (stream MsgRequest) returns (stream MsgReply) {}

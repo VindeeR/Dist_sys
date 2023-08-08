@@ -23,7 +23,12 @@ import "service1.proto";
 
 service MyService2 {
  	
+ 	// unary type
  	rpc addLocation (MsgRequest) returns (MsgReply) {}
+ 	
+ 	// unary type
  	rpc deleteLocation (MsgRequest) returns (MsgReply) {}
+ 	
+ 	// bi-directional streaming type
  	rpc specialSpot (stream MsgRequest) returns (stream MsgReply) {}
 }

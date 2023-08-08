@@ -29,10 +29,13 @@ service MyService1 {
 	// the server and gets a single response back, just like
 	// a normal function call.
 	
+	// unary type
 	rpc totalFloor (MsgRequest) returns (MsgReply) {}
 	
+	// client-streaming type
 	rpc percentageFloor (stream MsgRequest) returns (MsgReply) {}
 	
+	// client-streaming type
 	rpc changeLights (stream MsgRequest) returns (MsgReply) {}
 	
 }

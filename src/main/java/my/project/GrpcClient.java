@@ -270,8 +270,8 @@ public class GrpcClient {
 			  client.clientSidePercentageFloor();			// client-streaming type
 			  client.clientSideChangeLights();				// client-streaming type
 
-			  client.clientSideAddLocation();				// client-streaming type
-			  client.clientSideDeleteLocation();			// client-streaming type
+			  client.clientSideAddLocation();				// unary type
+			  client.clientSideDeleteLocation();			// unary type
 			  client.clientSideSpecialSpot();				// bi-directional streaming type
 			  
 			  client.clientSideFreeSpots();					// bi-directional streaming type

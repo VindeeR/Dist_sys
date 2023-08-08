@@ -23,7 +23,12 @@ import "service1.proto";
 
 service MyService3 {
 	
+	// bi-directional streaming type
  	rpc freeSpots (stream MsgRequest) returns (stream MsgReply) {}
+ 	
+ 	// server-streaming type
  	rpc countTime (MsgRequest) returns (stream MsgReply) {}
+ 	
+ 	// unary type
  	rpc payment (MsgRequest) returns (MsgReply) {}
 }
